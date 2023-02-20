@@ -1,0 +1,29 @@
+{
+    "name": "jan-herman/kirby-page-builder",
+    "description": "Kirby page builder",
+    "version": "1.0.0",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jan Herman",
+            "email": "mail@janherman.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "getkirby/composer-installer": "^1.2",
+        "jan-herman/kirby-barista": "^1.0"
+    },
+    "extra": {
+		"installer-name": "page-builder"
+	},
+    "config": {
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "psr-4": {
+            "JanHerman\\PageBuilder\\": "lib/"
+        }
+    }
+}

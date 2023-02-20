@@ -1,0 +1,10 @@
+tabs:
+    content:
+        label:
+            en: Content
+            cs: Obsah
+
+    settings:
+        label:
+            en: Settings
+            cs: Nastavení
