@@ -53,16 +53,16 @@ class PageBuilderBlockDefinition
 
     public function style(): string
     {
-        return F::exists($this->path . '/style.scss') ? $this->path . '/style.scss' : null;
+        return F::exists($this->path . '/style.scss') ? $this->path . '/style.scss' : '';
     }
 
     public function script(): string
     {
-        return F::exists($this->path . '/script.js') ? $this->path . '/script.js' : null;
+        return F::exists($this->path . '/script.js') ? $this->path . '/script.js' : '';
     }
 
     public function viteEntry(): string
     {
-        return $this->script() ? 'blocks/' . $this->type() . '/script.js' : null;
+        return $this->script() ? 'blocks/' . $this->type() . '/script.js' : '';
     }
 }
