@@ -30,4 +30,14 @@ class PageBuilderBlock extends Block
 
         return array_merge($parent_controller, $controller_data);
 	}
+
+    public function toHtml(): string
+	{
+        $kirby = $this->parent()->kirby();
+        return (string) $kirby->snippet(
+            'blocks/' . $this->type(),
+            $this->controller(),
+            true
+        );
+    }
 }
