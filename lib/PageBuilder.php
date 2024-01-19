@@ -85,8 +85,17 @@ class PageBuilder
         $templates = [];
 
         foreach ($this->blocks as $block_type => $block) {
-            if ($block->template()) {
-                $templates['blocks/' . $block_type] = $block->template();
+            if ($block->templates()) {
+                foreach ($block->templates() as $template) {
+                    $name = $template['name'];
+                    $key = 'blocks/' . $block_type;
+
+                    if ($name) {
+                        $key .= '/' . $name;
+                    }
+
+                    $templates[$key] = $template['path'];
+                }
             }
         }
 
@@ -102,7 +111,7 @@ class PageBuilder
         $blocks = [];
         $page_fields = $page->blueprint()->fields();
 
-        $page_builder_fields = array_filter($page_fields, function($field) {
+        $page_builder_fields = array_filter($page_fields, function ($field) {
             return $field['type'] === 'pageBuilder';
         });
 

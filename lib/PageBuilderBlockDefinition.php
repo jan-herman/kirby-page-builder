@@ -2,7 +2,7 @@
 
 namespace JanHerman\PageBuilder;
 
-use \F;
+use Kirby\Filesystem\F;
 
 class PageBuilderBlockDefinition
 {
@@ -10,7 +10,7 @@ class PageBuilderBlockDefinition
     protected string $type;
     protected string $blueprint;
     protected string $controller;
-    protected string $template;
+    protected array $templates;
 
     public function __construct(string $path)
     {
@@ -18,7 +18,23 @@ class PageBuilderBlockDefinition
         $this->type = basename($path);
         $this->blueprint = F::exists($path . '/blueprint.yml') ? $path . '/blueprint.yml' : '';
         $this->controller = F::exists($path . '/controller.php') ? $path . '/controller.php' : '';
-        $this->template = F::exists($path . '/template.latte') ? $path . '/template.latte' : '';
+
+        if (F::exists($path . '/template.latte')) {
+            $this->templates[] = [
+                'name' => '',
+                'path' => $path . '/template.latte',
+            ];
+        }
+
+        if (is_dir($path . '/templates')) {
+            $templates = array_filter(glob($path . '/templates/*'), 'is_file');
+            foreach ($templates as $path) {
+                $this->templates[] = [
+                    'name' => pathinfo($path, PATHINFO_FILENAME),
+                    'path' => $path,
+                ];
+            }
+        }
     }
 
     public function path(): string
@@ -46,9 +62,9 @@ class PageBuilderBlockDefinition
         return $this->controller;
     }
 
-    public function template(): string
+    public function templates(): array
     {
-        return $this->template;
+        return $this->templates;
     }
 
     public function style(): string

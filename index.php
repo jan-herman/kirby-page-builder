@@ -62,6 +62,7 @@ Kirby::plugin('jan-herman/page-builder', [
     ]
 ]);
 
-function page_builder() {
+function page_builder()
+{
     return PageBuilder::getInstance();
 }
