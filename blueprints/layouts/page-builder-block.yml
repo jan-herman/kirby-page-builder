@@ -3,8 +3,5 @@ tabs:
         label:
             en: Content
             cs: Obsah
-
-    settings:
-        label:
-            en: Settings
-            cs: Nastavení
+    header: false
+    settings: false
