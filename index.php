@@ -8,7 +8,8 @@ use JanHerman\PageBuilder\PageBuilder;
 Kirby::plugin('jan-herman/page-builder', [
     'options' => [
         'blocksDirectory' => null,
-        'blocks' => []
+        'blocks' => [],
+        'blocksWysiwyg' => [],
     ],
     'fields' => [
         'pageBuilder' => 'JanHerman\PageBuilder\PageBuilderField'

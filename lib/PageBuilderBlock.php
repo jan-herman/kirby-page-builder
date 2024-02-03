@@ -14,6 +14,11 @@ class PageBuilderBlock extends Block
         $this->template = $template;
     }
 
+    public function getTemplate(): string
+    {
+        return $this->template;
+    }
+
     public function definition(): PageBuilderBlockDefinition
     {
         return page_builder()->blockDefinition($this->type());
@@ -38,10 +43,11 @@ class PageBuilderBlock extends Block
     {
         $kirby = $this->parent()->kirby();
         $data = $this->controller();
+        $template = $this->getTemplate();
         $name = 'blocks/' . $this->type();
 
-        if ($this->template) {
-            $name .= '/' . $this->template;
+        if ($template) {
+            $name .= '/' . $template;
         }
 
         return (string) $kirby->snippet($name, $data, true);
