@@ -1,7 +1,7 @@
 {
     "name": "jan-herman/kirby-page-builder",
     "description": "Kirby page builder",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "type": "kirby-plugin",
     "license": "MIT",
     "homepage": "https://github.com/jan-herman/kirby-page-builder",
@@ -19,8 +19,8 @@
         "jan-herman/kirby-barista": "^1.0"
     },
     "extra": {
-		"installer-name": "page-builder"
-	},
+        "installer-name": "page-builder"
+    },
     "config": {
         "optimize-autoloader": true
     },

@@ -6,6 +6,11 @@
     - updated styles
 - block templates support
 
+### Changed
+- internal class names
+    - PageBuilderBlock -> Block
+    - PageBuilderBlockDefinition -> BlockDefinition
+
 ### Fixed
 - block controller now gets correct data
 
@@ -16,7 +21,7 @@
 
 ## [1.0.2] - 2023-08-12
 ### Changed
-- PageBuilderBLock method toHtml now throws errors instead of returning empty string
+- PageBuilderBlock method toHtml now throws errors instead of returning empty string
 
 
 ## [1.0.1] - 2023-02-20

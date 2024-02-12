@@ -35,7 +35,7 @@ class PageBuilder
 
         foreach ($blocks as $path) {
             $type = basename($path);
-            $block_definitions[$type] = new PageBuilderBlockDefinition($path);
+            $block_definitions[$type] = new BlockDefinition($path);
         }
 
         $this->blocks = $block_definitions;
@@ -51,7 +51,7 @@ class PageBuilder
         return $this->blocks;
     }
 
-    public function blockDefinition($block_type): PageBuilderBlockDefinition
+    public function blockDefinition($block_type): BlockDefinition
     {
         return $this->blocks[$block_type] ?? null;
     }

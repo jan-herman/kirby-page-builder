@@ -4,7 +4,7 @@ namespace JanHerman\PageBuilder;
 
 use Kirby\Filesystem\F;
 
-class PageBuilderBlockDefinition
+class BlockDefinition
 {
     protected string $path;
     protected string $type;
@@ -49,7 +49,7 @@ class PageBuilderBlockDefinition
 
     public function model(): string
     {
-        return PageBuilderBlock::class;
+        return Block::class;
     }
 
     public function blueprint(): string

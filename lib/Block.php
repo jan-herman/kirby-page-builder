@@ -2,10 +2,10 @@
 
 namespace JanHerman\PageBuilder;
 
-use Kirby\Cms\Block;
+use Kirby\Cms\Block as DefaultBlock;
 use Kirby\Toolkit\Controller;
 
-class PageBuilderBlock extends Block
+class Block extends DefaultBlock
 {
     protected string $template = '';
 
@@ -19,7 +19,7 @@ class PageBuilderBlock extends Block
         return $this->template;
     }
 
-    public function definition(): PageBuilderBlockDefinition
+    public function definition(): BlockDefinition
     {
         return page_builder()->blockDefinition($this->type());
     }

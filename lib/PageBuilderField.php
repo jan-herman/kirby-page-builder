@@ -34,9 +34,9 @@ class PageBuilderField extends BlocksField
     }
 
     public function props(): array
-	{
-		return [
-			'cssClass' => $this->cssClass()
-		] + parent::props();
-	}
+    {
+        return [
+            'cssClass' => $this->cssClass()
+        ] + parent::props();
+    }
 }
