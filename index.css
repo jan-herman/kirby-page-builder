@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+.jh-page-builder-field .k-block-container:is(.k-sortable-ghost, .k-sortable-fallback) .k-block {
+    max-height: 82px;
+}
+
 .jh-page-builder-field .k-block{
     flex-grow: 1;
 }
