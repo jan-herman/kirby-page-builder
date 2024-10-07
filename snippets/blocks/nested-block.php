@@ -1,10 +1,11 @@
 <?php
 
-if ($block->nested_block()->isEmpty()) {
+$block_page = $block->nested_block()->toPage();
+
+if (!$block_page) {
     return;
 }
 
-$block_page = $block->nested_block()->toPage();
 $page_builder_field = $block_page->page_builder();
 
-snippet('page-builder', ['field' => $page_builder_field]);
+snippet('page-builder', ['field' => $page_builder_field, 'is_nested' => true]);
