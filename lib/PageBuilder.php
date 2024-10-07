@@ -120,10 +120,13 @@ class PageBuilder
                 $blocks[] = $block;
 
                 if ($block->type() === 'nested-block') {
-                    if ($block->nested_block()->isEmpty()) {
+                    $nested_blocks_page = $block->nested_block()->toPage();
+
+                    if (!$nested_blocks_page) {
                         continue;
                     }
-                    $nested_blocks = $this->pageBlocks($block->nested_block()->toPage());
+
+                    $nested_blocks = $this->pageBlocks($nested_blocks_page);
                     array_push($blocks, ...$nested_blocks);
                 }
             }
