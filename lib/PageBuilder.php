@@ -118,6 +118,14 @@ class PageBuilder
         foreach ($page_builder_fields as $field_name => $field_definition) {
             foreach ($page->{$field_name}()->toBlocks() as $block) {
                 $blocks[] = $block;
+
+                if ($block->type() === 'nested-block') {
+                    if ($block->nested_block()->isEmpty()) {
+                        continue;
+                    }
+                    $nested_blocks = $this->pageBlocks($block->nested_block()->toPage());
+                    array_push($blocks, ...$nested_blocks);
+                }
             }
         }
 

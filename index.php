@@ -1,6 +1,8 @@
 <?php
 
 use Kirby\Cms\App as Kirby;
+use Kirby\Data\Yaml;
+use Kirby\Filesystem\F;
 use JanHerman\PageBuilder\PageBuilder;
 
 @include_once __DIR__ . '/vendor/autoload.php';
@@ -15,32 +17,54 @@ Kirby::plugin('jan-herman/page-builder', [
         'pageBuilder' => 'JanHerman\PageBuilder\PageBuilderField'
     ],
     'blockModels' => page_builder()->blockModels(),
-    'snippets' => page_builder()->blockTemplates(),
+    'snippets' => array_merge(
+        page_builder()->blockTemplates(),
+        [
+            'page-builder'        => __DIR__ . '/snippets/page-builder.php',
+            'blocks/nested-block' => __DIR__ . '/snippets/blocks/nested-block.php',
+        ]
+    ),
     'blueprints' => array_merge(
         page_builder()->blockBlueprints(),
         [
+            // Pages
+            'pages/nested-block'  => __DIR__ . '/blueprints/pages/nested-block.yml',
+            'pages/nested-blocks' => __DIR__ . '/blueprints/pages/nested-blocks.yml',
+
+            // Layouts
             'layouts/page-builder-block' => __DIR__ . '/blueprints/layouts/page-builder-block.yml',
-            'fields/page-builder' => function () {
+
+            // Blocks
+            'blocks/nested-block' => __DIR__ . '/blueprints/blocks/nested-block.yml',
+
+            // Fields
+            'fields/page-builder.default' => __DIR__ . '/blueprints/fields/page-builder.default.yml',
+            'fields/page-builder'         => function () {
                 return [
-                    'label' => t('jan-herman.page-builder.field.label'),
-                    'type' => 'pageBuilder',
-                    'cssClass' => 'jh-page-builder-field',
-                    'pretty' => true,
-                    'fieldsets' => option('jan-herman.page-builder.blocks')
+                    'extends'   => 'fields/page-builder.default',
+                    'fieldsets' => option('jan-herman.page-builder.blocks', [])
                 ];
             },
-            'fields/page-builder-wysiwyg' => function () {
+            'fields/page-builder-wysiwyg.default' => __DIR__ . '/blueprints/fields/page-builder-wysiwyg.default.yml',
+            'fields/page-builder-wysiwyg'         => function () {
                 return [
-                    'label' => t('jan-herman.page-builder.wysiwyg-field.label'),
-                    'type' => 'pageBuilder',
-                    'cssClass' => 'jh-page-builder-field-wysiwyg',
-                    'pretty' => true,
-                    'empty' => t('jan-herman.page-builder.wysiwyg-field.empty'),
-                    'fieldsets' => option('jan-herman.page-builder.blocksWysiwyg')
+                    'extends'   => 'fields/page-builder-wysiwyg.default',
+                    'fieldsets' => option('jan-herman.page-builder.blocksWysiwyg', [])
                 ];
             }
         ]
     ),
+    'templates' => [
+        'nested-block' => __DIR__ . '/templates/nested-block.latte',
+    ],
+    'routes' => [
+        [
+            'pattern' => 'block-library',
+            'action'  => function () {
+                return false;
+            }
+        ],
+    ],
     'pageMethods' => [
         'pageBuilderBlocks' => function () {
             return page_builder()->pageBlocks($this);
@@ -50,17 +74,9 @@ Kirby::plugin('jan-herman/page-builder', [
         }
     ],
     'translations' => [
-        'en' => [
-            'jan-herman.page-builder.field.label'         => 'Page Builder',
-            'jan-herman.page-builder.wysiwyg-field.label' => 'Content',
-            'jan-herman.page-builder.wysiwyg-field.empty' => 'Add some content',
-        ],
-        'cs' => [
-            'jan-herman.page-builder.field.label'         => 'Page Builder',
-            'jan-herman.page-builder.wysiwyg-field.label' => 'Obsah',
-            'jan-herman.page-builder.wysiwyg-field.empty' => 'Přidejte obsah',
-        ]
-    ]
+        'en' => Yaml::decode(F::read(__DIR__ . '/translations/en.yml')),
+        'cs' => Yaml::decode(F::read(__DIR__ . '/translations/cs.yml')),
+    ],
 ]);
 
 function page_builder()

@@ -1,0 +1,28 @@
+title: jan-herman.page-builder.page.nested-block.title
+
+icon: grid-top
+
+status:
+    draft:
+        label: jan-herman.page-builder.statuses.nested-block.draft.label
+        text: jan-herman.page-builder.statuses.nested-block.draft.text
+    listed:
+        label: jan-herman.page-builder.statuses.nested-block.listed.label
+        text: jan-herman.page-builder.statuses.nested-block.listed.text
+
+options:
+    changeSlug: true
+    changeStatus: true
+    changeTemplate: false
+    changeTitle: true
+    create: true
+    delete: true
+    duplicate: true
+    preview: true
+    read: true
+    sort: true
+    update: true
+
+tabs:
+    content: tabs/page-builder
+    media: tabs/media

@@ -1,7 +1,5 @@
 tabs:
     content:
-        label:
-            en: Content
-            cs: Obsah
+        label: jan-herman.page-builder.tabs.content.label
     header: false
     settings: false

@@ -1,0 +1,26 @@
+# Blocks
+jan-herman.page-builder.blocks.nested-block.label: Nested Block
+
+# Fields
+jan-herman.page-builder.field.page-builder.label: Page Builder
+jan-herman.page-builder.field.page-builder-wysiwyg.label: Content
+jan-herman.page-builder.field.page-builder-wysiwyg.empty: Add some content
+jan-herman.page-builder.field.nested-block.label: Selected Block
+jan-herman.page-builder.field.nested-block.empty: Select block from library...
+
+# Pages
+jan-herman.page-builder.page.nested-block.title: Block
+jan-herman.page-builder.page.nested-blocks.title: Block Library
+
+# Sections
+jan-herman.page-builder.section.blocks.label: Blocks
+jan-herman.page-builder.section.blocks.empty: You haven’t created any blocks yet.
+
+# Statuses
+jan-herman.page-builder.statuses.nested-block.draft.label: Draft
+jan-herman.page-builder.statuses.nested-block.draft.text: The block is only visible for logged in editors
+jan-herman.page-builder.statuses.nested-block.listed.label: Public
+jan-herman.page-builder.statuses.nested-block.listed.text: The block is visible for anyone
+
+# Tabs
+jan-herman.page-builder.tabs.content.label: Content

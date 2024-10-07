@@ -1,0 +1,7 @@
+label: jan-herman.page-builder.field.page-builder-wysiwyg.label
+
+type: pageBuilder
+
+pretty: true
+cssClass: jh-page-builder-field-wysiwyg
+empty: jan-herman.page-builder.field.page-builder-wysiwyg.empty

@@ -1,0 +1,26 @@
+# Blocks
+jan-herman.page-builder.blocks.nested-block.label: Nested Block
+
+# Fields
+jan-herman.page-builder.field.page-builder.label: Page Builder
+jan-herman.page-builder.field.page-builder-wysiwyg.label: Obsah
+jan-herman.page-builder.field.page-builder-wysiwyg.empty: Přidejte obsah
+jan-herman.page-builder.field.nested-block.label: Vybraný blok
+jan-herman.page-builder.field.nested-block.empty: Vyberte blok z knihovny...
+
+# Pages
+jan-herman.page-builder.page.nested-block.title: Blok
+jan-herman.page-builder.page.nested-blocks.title: Knihovna bloků
+
+# Sections
+jan-herman.page-builder.section.blocks.label: Bloky
+jan-herman.page-builder.section.blocks.empty: Zatím jste nevytvořili žádné bloky.
+
+# Statuses
+jan-herman.page-builder.statuses.nested-block.draft.label: Koncept
+jan-herman.page-builder.statuses.nested-block.draft.text: Blok je viditelný pouze pro přihlášené editory
+jan-herman.page-builder.statuses.nested-block.listed.label: Veřejný
+jan-herman.page-builder.statuses.nested-block.listed.text: Blok je viditelný pro každého
+
+# Tabs
+jan-herman.page-builder.tabs.content.label: Obsah

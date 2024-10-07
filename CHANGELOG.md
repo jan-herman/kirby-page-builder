@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.0] - 2024-10-07
+### Added
+- Nested blocks support
+- page-builder.default & page-builder-wysiwyg.default field blueprints to enable field definitions in blueprints instead of options
+- page-builder snippet
+
+### Changed
+- moved translations to translations folder
+
+### Fixed
+- standardized some translation keys
+
+
 ## [2.0.0] - 2024-01-19
 ### Added
 - Kirby 4 support

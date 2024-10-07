@@ -1,0 +1,14 @@
+title: jan-herman.page-builder.blocks.nested-block.label
+
+icon: parent
+
+label: '{{ nested_block.0.text }}'
+
+fields:
+    nested_block:
+        label: jan-herman.page-builder.field.nested-block.label
+        type: pages
+        query: site.find('block-library').children.remove(page)
+        empty: jan-herman.page-builder.field.nested-block.empty
+        multiple: false
+        required: true

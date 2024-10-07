@@ -1,0 +1,6 @@
+label: jan-herman.page-builder.field.page-builder.label
+
+type: pageBuilder
+
+pretty: true
+cssClass: jh-page-builder-field

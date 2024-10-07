@@ -61,3 +61,9 @@
     white-space: normal;
     user-select: none;
 }
+
+
+/* Hide header buttons in block library */
+.k-page-view[data-template="nested-blocks"] .k-header-buttons{
+    display: none;
+}

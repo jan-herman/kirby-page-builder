@@ -1,0 +1,11 @@
+{extends $kirby->root('templates') . '/@layout.latte'}
+
+{* Redirect to panel if user is not logged in *}
+{if !$kirby->user()}
+    {do go($site->panel()->url(), 302)}
+{/if}
+
+{* Page Builder *}
+{block content}
+    {do snippet('page-builder', ['field' => $page->page_builder()])}
+{/block}
