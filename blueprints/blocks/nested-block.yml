@@ -8,7 +8,7 @@ fields:
     nested_block:
         label: jan-herman.page-builder.field.nested-block.label
         type: pages
-        query: site.find('block-library').children.remove(page)
+        query: site.find('block-library').childrenAndDrafts.remove(page)
         empty: jan-herman.page-builder.field.nested-block.empty
         multiple: false
         required: true

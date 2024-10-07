@@ -2,7 +2,7 @@
 
 $block_page = $block->nested_block()->toPage();
 
-if (!$block_page) {
+if (!$block_page || (!$kirby->user() && !$block_page->isListed())) {
     return;
 }
 
