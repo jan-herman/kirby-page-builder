@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.2.0] - 2025-03-17
+### Changed
+- updated styles (added gaps between blocks)
+
+
 ## [2.1.0] - 2024-10-07
 ### Added
 - Nested blocks support
