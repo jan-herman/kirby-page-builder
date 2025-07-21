@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.3.0] - 2025-07-21
+### Added
+- Kirby 5 compatibility
+
+
 ## [2.2.0] - 2025-03-17
 ### Changed
 - updated styles (added gaps between blocks)
