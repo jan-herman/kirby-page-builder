@@ -22,7 +22,7 @@
 }
 
 .jh-page-builder-field .k-block-container:is(.k-sortable-ghost, .k-sortable-fallback) .k-block {
-    max-height: 82px;
+    max-height: 83px;
 }
 
 .jh-page-builder-field .k-block{
@@ -30,10 +30,12 @@
 }
 
 .jh-page-builder-field .k-block-title{
-    flex-wrap: wrap;
-    gap: 0 var(--spacing-4);
-    min-height: 82px;
-    padding: 1.25rem 1rem;
+    --icon-size: 20px;
+    height: 100%;
+    align-items: center;
+    gap: 0 var(--spacing-6);
+    min-height: 83px;
+    padding: 1.25rem 1rem 1.25rem var(--spacing-6);
 }
 
 .jh-page-builder-field .k-block-name{
@@ -43,10 +45,19 @@
 
 .jh-page-builder-field .k-block-label{
     width: 100%;
-    padding-left: calc(var(--icon-size) + var(--spacing-4));
     user-select: none;
     font-size: var(--text-sm);
     white-space: normal;
+}
+
+/* Deprecated: Kirby 4 backwards compatibility - Remove in v3.0 */
+.jh-page-builder-field .k-block-title:not(.jh-page-builder-field .k-block-title:has(.k-block-title-text)){
+    --icon-size: 18px;
+    flex-wrap: wrap;
+}
+
+.jh-page-builder-field .k-block-title > .k-block-label{
+    padding-left: calc(var(--icon-size) + var(--spacing-6));
 }
 
 
@@ -76,6 +87,39 @@
     font-size: var(--text-sm);
     white-space: normal;
     user-select: none;
+}
+
+
+/* Repeater */
+.jh-page-builder-field-repeater .k-blocks:not([data-empty=true],[data-disabled=true]){
+    background: none;
+    box-shadow: none;
+}
+
+.jh-page-builder-field-repeater .k-blocks-list{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.jh-page-builder-field-repeater .k-block-container{
+    box-shadow: var(--shadow);
+}
+
+.jh-page-builder-field-repeater .k-block-container:not(:last-of-type){
+    border-bottom: none;
+}
+
+.jh-page-builder-field-repeater .k-block-title{
+    flex-grow: 1;
+}
+
+.jh-page-builder-field-repeater .k-block-title:has(.k-block-label) .k-block-name{
+    display: none;
+}
+
+.jh-page-builder-field-repeater .k-block-label{
+    color: var(--color-text);
 }
 
 

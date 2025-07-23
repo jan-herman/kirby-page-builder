@@ -3,6 +3,7 @@
 ## [2.3.0] - 2025-07-21
 ### Added
 - Kirby 5 compatibility
+- `fields/repeater` blueprint
 
 
 ## [2.2.0] - 2025-03-17

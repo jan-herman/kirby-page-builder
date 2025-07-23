@@ -51,7 +51,8 @@ Kirby::plugin('jan-herman/page-builder', [
                     'extends'   => 'fields/page-builder-wysiwyg.default',
                     'fieldsets' => option('jan-herman.page-builder.blocksWysiwyg', [])
                 ];
-            }
+            },
+            'fields/repeater' => __DIR__ . '/blueprints/fields/repeater.yml',
         ]
     ),
     'templates' => [
