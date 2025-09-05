@@ -18,6 +18,7 @@ class BlockDefinition
         $this->type = basename($path);
         $this->blueprint = F::exists($path . '/blueprint.yml') ? $path . '/blueprint.yml' : '';
         $this->controller = F::exists($path . '/controller.php') ? $path . '/controller.php' : '';
+        $this->templates = [];
 
         if (F::exists($path . '/template.latte')) {
             $this->templates[] = [

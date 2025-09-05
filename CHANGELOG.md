@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.3.2] - 2025-09-05
+### Fixed
+- Bug: Plugin crashes website when none of the blocks has a template
+
+
 ## [2.3.0] - 2025-07-21
 ### Added
 - Kirby 5 compatibility
