@@ -116,7 +116,7 @@ class PageBuilder
         });
 
         foreach ($page_builder_fields as $field_name => $field_definition) {
-            foreach ($page->{$field_name}()->toBlocks() as $block) {
+            foreach ($page->content()->{$field_name}()->toBlocks() as $block) {
                 $blocks[] = $block;
 
                 if ($block->type() === 'nested-block') {

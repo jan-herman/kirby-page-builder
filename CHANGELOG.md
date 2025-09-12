@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.3.3] - 2025-09-12
+### Fixed
+- Bug: Field named 'content' breaks PagwBuilder->pageBlocks() method
+
+
 ## [2.3.2] - 2025-09-05
 ### Fixed
 - Bug: Plugin crashes website when none of the blocks has a template
