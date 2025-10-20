@@ -22,12 +22,29 @@ class PageBuilder
         return self::$instance ??= new self();
     }
 
-    public function setBlocksDirectory(string $blocks_directory = null)
+    public function setBlocksDirectory(string|null $blocks_directory = null): void
     {
-        $this->blocks_directory = $blocks_directory ?? option('jan-herman.page-builder.blocksDirectory', kirby()->root('site') . '/blocks');
+        if ($blocks_directory !== null) {
+            $this->blocks_directory = $blocks_directory;
+            return;
+        }
+
+        $option = option('jan-herman.page-builder.blocksDirectory');
+
+        if (is_callable($option)) {
+            $this->blocks_directory = $option();
+            return;
+        }
+
+        if (is_string($option)) {
+            $this->blocks_directory = $option;
+            return;
+        }
+
+        $this->blocks_directory = kirby()->root('site') . '/blocks';
     }
 
-    public function setBlocks(string $blocks_directory = null)
+    public function setBlocks(string|null $blocks_directory = null): void
     {
         $blocks_directory = $blocks_directory ?? $this->blocks_directory;
         $blocks = glob($blocks_directory . '/*', GLOB_ONLYDIR);

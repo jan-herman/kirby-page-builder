@@ -9,7 +9,8 @@ use JanHerman\PageBuilder\PageBuilder;
 
 Kirby::plugin('jan-herman/page-builder', [
     'options' => [
-        'blocksDirectory' => null,
+        'blocksDirectory' => kirby()->root('site') . '/blocks',
+        'blocksDirectoryVite' => 'blocks',
         'blocks' => [],
         'blocksWysiwyg' => [],
     ],

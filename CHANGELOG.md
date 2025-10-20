@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.4.0] - 2025-10-14
+### Added
+- support for new virtual js modules in jan-herman/kirby-vite v.2.4
+    - `blocksDirectoryVite` option (relative to Vite's rootDir, defaults to 'blocks')
+    - `viteEntryStyle()` & `viteEntryScript()` methods in BlockDefinition
+
+### Changed
+- `blocksDirectory` option now accepts callable
+
+
 ## [2.3.3] - 2025-09-12
 ### Fixed
 - Bug: Field named 'content' breaks PagwBuilder->pageBlocks() method

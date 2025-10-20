@@ -80,6 +80,26 @@ class BlockDefinition
 
     public function viteEntry(): string
     {
-        return $this->script() ? 'blocks/' . $this->type() . '/script.js' : '';
+        return $this->viteEntryScript();
+    }
+
+    public function viteEntryStyle(): string
+    {
+        if (!$this->style()) {
+            return '';
+        }
+
+        $root = option('jan-herman.page-builder.blocksDirectoryVite');
+        return ltrim($root . '/' . $this->type() . '/style.scss', '/');
+    }
+
+    public function viteEntryScript(): string
+    {
+        if (!$this->script()) {
+            return '';
+        }
+
+        $root = option('jan-herman.page-builder.blocksDirectoryVite');
+        return ltrim($root . '/' . $this->type() . '/script.js', '/');
     }
 }
