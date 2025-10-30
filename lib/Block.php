@@ -7,7 +7,7 @@ use Kirby\Toolkit\Controller;
 
 class Block extends DefaultBlock
 {
-    protected string $template = '';
+    protected string $template = 'default';
 
     public function setTemplate(string $template): void
     {

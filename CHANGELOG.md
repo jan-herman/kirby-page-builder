@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.5.0] - 2025-10-30
+### Added
+- new naming scheme support
+    - files in the block root can now be prefixed with the block name for easier IDE navigation (i.e. block-name.template.latte)
+- `blockStructure` option
+- support for callables in `blocksDirectory` option
+- `Utils` class
+    - `option()` method
+    - `normalizePath()` method
+    - `pathFromOption()` method
+- `BlockDefinition->template()` method
+
+### Changed
+- major `BlockDefinition` refactoring
+    - caching for all paths
+    - no hard-coded paths
+- default block template changed from an empty string to 'default'
+- all paths are now normalized
+- BlockDefinition->templates() array format changed from indexed to associative (now ['template-name' => 'path/to/template.latte']) (⚡ potential BC break)
+
+
 ## [2.4.0] - 2025-10-14
 ### Added
 - support for new virtual js modules in jan-herman/kirby-vite v.2.4

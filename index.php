@@ -11,6 +11,14 @@ Kirby::plugin('jan-herman/page-builder', [
     'options' => [
         'blocksDirectory' => kirby()->root('site') . '/blocks',
         'blocksDirectoryVite' => 'blocks',
+        'blockStructure' => [
+            'templatesDirectory' => 'templates',
+            'blueprint' => 'blueprint.yml',
+            'controller' => 'controller.php',
+            'template' => 'template.latte',
+            'style' => 'style.scss',
+            'script' => 'script.js',
+        ],
         'blocks' => [],
         'blocksWysiwyg' => [],
     ],

@@ -25,23 +25,11 @@ class PageBuilder
     public function setBlocksDirectory(string|null $blocks_directory = null): void
     {
         if ($blocks_directory !== null) {
-            $this->blocks_directory = $blocks_directory;
+            $this->blocks_directory = Utils::normalizePath($blocks_directory);
             return;
         }
 
-        $option = option('jan-herman.page-builder.blocksDirectory');
-
-        if (is_callable($option)) {
-            $this->blocks_directory = $option();
-            return;
-        }
-
-        if (is_string($option)) {
-            $this->blocks_directory = $option;
-            return;
-        }
-
-        $this->blocks_directory = kirby()->root('site') . '/blocks';
+        $this->blocks_directory = Utils::pathFromOption('blocksDirectory', kirby()->root('site') . '/blocks');
     }
 
     public function setBlocks(string|null $blocks_directory = null): void
@@ -68,7 +56,7 @@ class PageBuilder
         return $this->blocks;
     }
 
-    public function blockDefinition($block_type): BlockDefinition
+    public function blockDefinition($block_type): ?BlockDefinition
     {
         return $this->blocks[$block_type] ?? null;
     }
@@ -102,17 +90,14 @@ class PageBuilder
         $templates = [];
 
         foreach ($this->blocks as $block_type => $block) {
-            if ($block->templates()) {
-                foreach ($block->templates() as $template) {
-                    $name = $template['name'];
+            foreach ($block->templates() as $name => $path) {
+                if ($name === 'default') {
                     $key = 'blocks/' . $block_type;
-
-                    if ($name) {
-                        $key .= '/' . $name;
-                    }
-
-                    $templates[$key] = $template['path'];
+                } else{
+                    $key = 'blocks/' . $block_type . '/' . $name;
                 }
+
+                $templates[$key] = $path;
             }
         }
 
@@ -156,10 +141,11 @@ class PageBuilder
     {
         $blocks = $this->pageBlocks($page);
 
-        if (!$blocks) {
+        if (empty($blocks)) {
             return [];
         }
 
+        $block_definitions = [];
         foreach ($blocks as $block) {
             $block_definitions[$block->type()] = $block->definition();
         }
