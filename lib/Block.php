@@ -46,7 +46,7 @@ class Block extends DefaultBlock
         $template = $this->getTemplate();
         $name = 'blocks/' . $this->type();
 
-        if ($template) {
+        if ($template !== 'default') {
             $name .= '/' . $template;
         }
 
