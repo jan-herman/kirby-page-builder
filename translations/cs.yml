@@ -1,5 +1,5 @@
 # Blocks
-jan-herman.page-builder.blocks.nested-block.label: Nested Block
+jan-herman.page-builder.blocks.nested-block.label: Zanořený blok
 
 # Fields
 jan-herman.page-builder.field.page-builder.label: Page Builder
@@ -7,6 +7,7 @@ jan-herman.page-builder.field.page-builder-wysiwyg.label: Obsah
 jan-herman.page-builder.field.page-builder-wysiwyg.empty: Přidejte obsah
 jan-herman.page-builder.field.nested-block.label: Vybraný blok
 jan-herman.page-builder.field.nested-block.empty: Vyberte blok z knihovny...
+jan-herman.page-builder.field.repeater.label: Obsah
 
 # Pages
 jan-herman.page-builder.page.nested-block.title: Blok

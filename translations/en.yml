@@ -7,6 +7,7 @@ jan-herman.page-builder.field.page-builder-wysiwyg.label: Content
 jan-herman.page-builder.field.page-builder-wysiwyg.empty: Add some content
 jan-herman.page-builder.field.nested-block.label: Selected Block
 jan-herman.page-builder.field.nested-block.empty: Select block from library...
+jan-herman.page-builder.field.repeater.label: Content
 
 # Pages
 jan-herman.page-builder.page.nested-block.title: Block
