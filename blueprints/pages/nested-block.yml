@@ -1,6 +1,10 @@
 title: jan-herman.page-builder.page.nested-block.title
 
 icon: grid-top
+image:
+    query: false
+    back: var(--jh-item-image-color-bg)
+    color: var(--jh-item-image-color)
 
 status:
     draft:

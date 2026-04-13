@@ -75,6 +75,10 @@
     text-align: center;
 }
 
+.jh-page-builder-field-wysiwyg .k-block-type-default .k-block-icon{
+    margin: 0 auto;
+}
+
 .jh-page-builder-field-wysiwyg .k-block-type-default .k-block-name{
     width: 100%;
     font-weight: var(--font-semi);
