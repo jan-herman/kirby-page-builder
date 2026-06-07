@@ -1,6 +1,6 @@
 title: jan-herman.page-builder.page.nested-blocks.title
 
-icon: grid-top
+icon: stacked-view
 
 options:
     access: true
@@ -17,6 +17,8 @@ options:
     sort: false
     update: false
 
+buttons: false
+
 sections:
     blocks:
         label: jan-herman.page-builder.section.blocks.label
@@ -26,4 +28,4 @@ sections:
         empty: jan-herman.page-builder.section.blocks.empty
         layout: list
         search: true
-        image: grid-top
+        image: stacked-view

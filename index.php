@@ -4,13 +4,26 @@ use Kirby\Cms\App as Kirby;
 use Kirby\Data\Yaml;
 use Kirby\Filesystem\F;
 use JanHerman\PageBuilder\PageBuilder;
+use JanHerman\PageBuilder\Models\NestedBlocks;
 
 @include_once __DIR__ . '/vendor/autoload.php';
+
+// Helper functions
+if (!function_exists('page_builder')) {
+    function page_builder(): PageBuilder
+    {
+        return PageBuilder::getInstance();
+    }
+}
 
 Kirby::plugin('jan-herman/page-builder', [
     'options' => [
         'blocksDirectory' => kirby()->root('site') . '/blocks',
         'blocksDirectoryVite' => 'blocks',
+        'blockLibrary' => [
+            'slug' => 'block-library',
+            'uuid' => 'block-library',
+        ],
         'blockStructure' => [
             'templatesDirectory' => 'templates',
             'blueprint' => 'blueprint.yml',
@@ -26,6 +39,9 @@ Kirby::plugin('jan-herman/page-builder', [
         'pageBuilder' => 'JanHerman\PageBuilder\PageBuilderField'
     ],
     'blockModels' => page_builder()->blockModels(),
+    'pageModels' => [
+        'nested-blocks' => NestedBlocks::class,
+    ],
     'snippets' => array_merge(
         page_builder()->blockTemplates(),
         [
@@ -67,29 +83,12 @@ Kirby::plugin('jan-herman/page-builder', [
     'templates' => [
         'nested-block' => __DIR__ . '/templates/nested-block.latte',
     ],
-    'routes' => [
-        [
-            'pattern' => 'block-library',
-            'action'  => function () {
-                return false;
-            }
-        ],
-    ],
-    'pageMethods' => [
-        'pageBuilderBlocks' => function () {
-            return page_builder()->pageBlocks($this);
-        },
-        'pageBuilderBlockDefinitions' => function () {
-            return page_builder()->pageBlockDefinitions($this);
-        }
-    ],
+    'areas' => require __DIR__ . '/config/areas.php',
+    'routes' => require __DIR__ . '/config/routes.php',
+    'commands' => require __DIR__ . '/config/commands.php',
+    'pageMethods' => require __DIR__ . '/config/page-methods.php',
     'translations' => [
         'en' => Yaml::decode(F::read(__DIR__ . '/translations/en.yml')),
         'cs' => Yaml::decode(F::read(__DIR__ . '/translations/cs.yml')),
     ],
 ]);
-
-function page_builder()
-{
-    return PageBuilder::getInstance();
-}

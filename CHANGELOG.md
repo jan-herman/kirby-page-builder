@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.6.0] - 2026-07-06
+### Added
+- `blockLibrary.slug` & `blockLibrary.uuid` options
+- `block-library` custom panel areas (can be used in panel menu definition)
+- `kirby make:block-library` CLI command
+- `NestedBlocks` model (automatically generate title)
+
+
 ## [2.5.0] - 2025-10-30
 ### Added
 - new naming scheme support

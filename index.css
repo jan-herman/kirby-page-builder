@@ -125,9 +125,3 @@
 .jh-page-builder-field-repeater .k-block-label{
     color: var(--color-text);
 }
-
-
-/* Hide header buttons in block library */
-.k-page-view[data-template="nested-blocks"] .k-header-buttons{
-    display: none;
-}

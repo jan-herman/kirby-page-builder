@@ -12,6 +12,7 @@ jan-herman.page-builder.field.repeater.label: Content
 # Pages
 jan-herman.page-builder.page.nested-block.title: Block
 jan-herman.page-builder.page.nested-blocks.title: Block Library
+jan-herman.page-builder.page.nested-blocks.menuTitle: Blocks
 
 # Sections
 jan-herman.page-builder.section.blocks.label: Blocks
