@@ -4,6 +4,7 @@ namespace JanHerman\PageBuilder;
 
 use Kirby\Cms\Block as DefaultBlock;
 use Kirby\Toolkit\Controller;
+use Throwable;
 
 class Block extends DefaultBlock
 {
@@ -39,17 +40,27 @@ class Block extends DefaultBlock
         return array_merge($parent_controller, $controller);
     }
 
-    public function toHtml(): string
+    public function toHtml(array $data = []): string
     {
-        $kirby = $this->parent()->kirby();
-        $data = $this->controller();
-        $template = $this->getTemplate();
-        $name = 'blocks/' . $this->type();
+        try {
+            $kirby = $this->parent()->kirby();
+            $data = array_merge($this->controller(), $data);
+            $template = $this->getTemplate();
+            $name = 'blocks/' . $this->type();
 
-        if ($template !== 'default') {
-            $name .= '/' . $template;
-        }
+            if ($template !== 'default') {
+                $name .= '/' . $template;
+            }
 
-        return (string) $kirby->snippet($name, $data, true);
+            return (string) $kirby->snippet($name, $data, true);
+        } catch (Throwable $e) {
+			if ($kirby->option('debug') === true || $kirby->environment()->isLocal()) {
+				throw $e;
+			}
+
+			error_log($e);
+
+			return '';
+		}
     }
 }

@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.7.0] - 2026-07-20
+### Added
+- optional `$data` parameter to `Block::toHtml()` method (data are merged with controller data)
+
+
 ## [2.6.0] - 2026-07-06
 ### Added
 - `blockLibrary.slug` & `blockLibrary.uuid` options
