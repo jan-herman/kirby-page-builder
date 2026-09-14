@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.7.1] - 2026-09-14
+### Fixed
+- Bug: Page builder field nested in repeater is missing block names
+
+
 ## [2.7.0] - 2026-07-20
 ### Added
 - optional `$data` parameter to `Block::toHtml()` method (data are merged with controller data)

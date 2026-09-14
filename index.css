@@ -118,7 +118,7 @@
     flex-grow: 1;
 }
 
-.jh-page-builder-field-repeater .k-block-title:has(.k-block-label) .k-block-name{
+.jh-page-builder-field-repeater .k-block-title:has(.k-block-label) .k-block-name:not(.jh-page-builder-field-repeater .k-field .k-block-name) {
     display: none;
 }
 
