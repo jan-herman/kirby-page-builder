@@ -122,6 +122,6 @@
     display: none;
 }
 
-.jh-page-builder-field-repeater .k-block-label{
+.jh-page-builder-field-repeater .k-block-label:not(.jh-page-builder-field-repeater .k-field .k-block-label){
     color: var(--color-text);
 }

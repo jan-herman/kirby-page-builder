@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.7.1] - 2026-09-14
+## [2.7.2] - 2026-09-14
 ### Fixed
 - Bug: Page builder field nested in repeater is missing block names
 
