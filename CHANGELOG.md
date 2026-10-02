@@ -2,7 +2,10 @@
 
 ## [2.8.0] - 2026-10-02
 ### Added
-- `Block::anchorId()` for URL-safe anchors based on a content field or a stable short block ID, with request-wide collision suffixes and cached assignments
+- `Block::anchorId()` method
+
+### Changed
+- `Block::controller()` now provides only `block` and `content` by default. Deprecated `data`, `id`, `prev`, and `next` variables are no longer provided (⚡ potential BC break).
 
 
 ## [2.7.2] - 2026-09-14

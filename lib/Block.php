@@ -2,6 +2,7 @@
 
 namespace JanHerman\PageBuilder;
 
+use InvalidArgumentException;
 use Kirby\Cms\Block as DefaultBlock;
 use Kirby\Toolkit\Controller;
 use Throwable;
@@ -28,7 +29,7 @@ class Block extends DefaultBlock
         return page_builder()->blockDefinition($this->type());
     }
 
-    public function anchorId(string $fieldName = 'id'): string
+    public function anchorId(string|array|null $fieldName = null, string $prefix = 'b-'): string
     {
         $key = $this->parent()->id() . ':' . $this->id;
 
@@ -36,13 +37,29 @@ class Block extends DefaultBlock
             return self::$anchorIds[$key];
         }
 
-        $field = $this->content()->get($fieldName);
-        $base = $field->isNotEmpty() ? (string) $field->slug()->value() : '';
+        if ($prefix !== '' && preg_match('/\A[a-z][a-z0-9-]*\z/i', $prefix) !== 1) {
+            throw new InvalidArgumentException('Nonempty anchor prefixes must start with a letter and contain only letters, digits, and hyphens.');
+        }
+
+        $base = '';
+
+        foreach ((array) $fieldName as $name) {
+            if (!is_string($name)) {
+                throw new InvalidArgumentException('Anchor field names must be strings.');
+            }
+
+            $field = $this->content()->get($name);
+
+            if ($field->isNotEmpty()) {
+                $base = (string) $field->slug()->value();
+                break;
+            }
+        }
 
         if ($base === '') {
-            $base = 'b-' . substr(hash('sha256', $this->id), 0, 12);
+            $base = $prefix . substr(hash('sha256', $this->id), 0, 12);
         } elseif (ctype_digit($base[0])) {
-            $base = 'b-' . $base;
+            $base = $prefix . $base;
         }
 
         $anchorId = $base;
@@ -59,17 +76,21 @@ class Block extends DefaultBlock
 
     public function controller(array $data = []): array
     {
-        $controller_path = $this->definition()->controller();
-        $parent_controller = parent::controller();
+        $defaultData = [
+            'block'   => $this,
+            'content' => $this->content(),
+        ];
 
-        if (!$controller_path) {
-            return $parent_controller;
+        $controllerPath = $this->definition()->controller();
+
+        if (!$controllerPath) {
+            return $defaultData;
         }
 
-        $data = array_merge($parent_controller, $data);
-        $controller = (array) Controller::load($controller_path)->call(null, $data);
+        $data = array_merge($defaultData, $data);
+        $controller = (array) Controller::load($controllerPath)->call(null, $data);
 
-        return array_merge($parent_controller, $controller);
+        return array_merge($defaultData, $controller);
     }
 
     public function toHtml(array $data = []): string
