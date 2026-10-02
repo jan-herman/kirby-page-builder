@@ -8,6 +8,9 @@ use Throwable;
 
 class Block extends DefaultBlock
 {
+    protected static array $anchorIds = [];
+    protected static array $usedAnchorIds = [];
+
     protected string $template = 'default';
 
     public function setTemplate(string $template): void
@@ -23,6 +26,35 @@ class Block extends DefaultBlock
     public function definition(): BlockDefinition
     {
         return page_builder()->blockDefinition($this->type());
+    }
+
+    public function anchorId(string $fieldName = 'id'): string
+    {
+        $key = $this->parent()->id() . ':' . $this->id;
+
+        if (isset(self::$anchorIds[$key])) {
+            return self::$anchorIds[$key];
+        }
+
+        $field = $this->content()->get($fieldName);
+        $base = $field->isNotEmpty() ? (string) $field->slug()->value() : '';
+
+        if ($base === '') {
+            $base = 'b-' . substr(hash('sha256', $this->id), 0, 12);
+        } elseif (ctype_digit($base[0])) {
+            $base = 'b-' . $base;
+        }
+
+        $anchorId = $base;
+        $suffix = 2;
+
+        while (isset(self::$usedAnchorIds[$anchorId])) {
+            $anchorId = $base . '-' . $suffix++;
+        }
+
+        self::$usedAnchorIds[$anchorId] = true;
+
+        return self::$anchorIds[$key] = $anchorId;
     }
 
     public function controller(array $data = []): array

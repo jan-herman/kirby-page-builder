@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.8.0] - 2026-10-02
+### Added
+- `Block::anchorId()` for URL-safe anchors based on a content field or a stable short block ID, with request-wide collision suffixes and cached assignments
+
+
 ## [2.7.2] - 2026-09-14
 ### Fixed
 - Bug: Page builder field nested in repeater is missing block names
